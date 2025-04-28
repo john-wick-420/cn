@@ -1,0 +1,26 @@
+clc;
+clear;
+Hm = 2;
+Hb = 40;
+pt = 0.020;
+gt = 1;
+C = 0;
+// Calculation of a(Hm)
+a_Hm = (3.2*(log10(11.75*Hm))^2) - 4.97;
+// Calculation of A and B
+A = 69.55 + 26.16*log10(6000) - 13.82*log10(Hb) - a_Hm;
+B = 44.9 - 6.55*log10(Hb);
+// Distance range
+d = 8:1:15;
+// Path loss calculation
+p1 = A + B*log10(d) + C;
+// Display results
+disp(p1);
+disp("a(Hm) = " + string(a_Hm));
+disp("A = " + string(A));
+disp("B = " + string(B));
+// Plotting
+plot(d, p1);
+xlabel("Distance between transmitter and receiver (km)");
+ylabel("Pathloss (dB)");
+title("Pathloss vs Distance");
